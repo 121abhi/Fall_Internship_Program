@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Count and Space Removal</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        textarea {
+            width: 100%;
+            height: 100px;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin-right: 10px;
+            background-color: #282c34;
+            color: white;
+            border-radius: 6px;
+        }
+
+        #output {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Word Counter and Removal Spaces</h1>
+        <p>
+            The "Remove Extra Spaces" button allows you to clean up your text by eliminating redundant spaces.
+            Sometimes, when typing or copying text, extra spaces can unintentionally appear between words. Clicking the
+            "Remove Extra Spaces" button will streamline your text by replacing consecutive spaces with a single space,
+            giving your text a cleaner and more uniform appearance.
+        </p>
+
+        <p>
+            The "Count Words" button provides a quick and convenient way to determine the number of words in your text.
+            Simply input your text into the provided textarea and click the "Count Words" button. The application will
+            then analyze the text, counting the words and displaying the word count below. This feature is helpful for
+            tracking the length of your content or maintaining specific word limits in various contexts.
+        </p>
+        <textarea id="inputText" placeholder="Enter your text here"></textarea>
+        <button onclick="removeExtraSpaces()">Remove Extra Spaces</button>
+        <button onclick="countWords()">Count Words</button>
+        <p id="output"></p>
+    </div>
+    <script>
+        // function to remove extra spaces
+        function removeExtraSpaces() {
+            const inputText = document.getElementById('inputText').value;
+            const formattedText = inputText.replace(/\s+/g, ' ').trim();
+            document.getElementById('inputText').value = formattedText;
+        }
+
+        // function to count words
+        function countWords() {
+            const inputText = document.getElementById('inputText').value;
+            const words = inputText.split(/\s+/).filter(word => word.length > 0);
+            const wordCount = words.length;
+            document.getElementById('output').innerText = `Word count: ${wordCount}`;
+        }
+
+    </script>
+</body>
+
+</html>
